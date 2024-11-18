@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff"> <!-- Theme color for PWA -->
+  <link rel="stylesheet" href="/css/style.css"> <!-- Link to CSS -->
+  <title>SQLite Web App</title>
+  <link rel="manifest" href="/manifest.json"> <!-- Link to Web App Manifest -->
+  <link rel="icon" href="/icons/icon-192x192.png"> <!-- Fallback favicon -->
+
+  <!-- PWA: Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(() => console.log("Service Worker registered successfully"))
+        .catch((error) => console.error("Service Worker registration failed:", error));
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>SQLite Web App</h1>
+  </header>
+  <main>
+    <!-- Table A Form -->
+    <section>
+      <h2>Table A</h2>
+      <form action="/insert-tableA" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Add to Table A</button>
+      </form>
+    </section>
+
+    <!-- Table B Form -->
+    <section>
+      <h2>Table B</h2>
+      <form action="/insert-tableB" method="POST">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required>
+        <button type="submit">Add to Table B</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 SQLite Web App</p>
+  </footer>
+</body>
+</html>
